@@ -131,7 +131,7 @@ def initEnvironment():
 	global BUILD_PLATFORM #生成app对应的平台
 
 
-	BOOL_BUILD_APP = True
+	BOOL_BUILD_APP = True #是否生成app的资源（True表示打包资源到app目录，False表示打包资源到更新目录）
 
 	IgnoreCopyExtFileDic = {
 		'jpg' : True,
@@ -211,6 +211,10 @@ def svnUpdate():
 
 def packRes():
 	print "2:pack res files"
+
+	if not os.path.exists('PackRes.php'):
+		print 'Error: PackRes.php not exist, pack res stop!'
+		return
 
 	removeDir(APP_ROOT + "/packres/") #--->删除旧加密资源
 
